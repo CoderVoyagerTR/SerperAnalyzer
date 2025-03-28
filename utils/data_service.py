@@ -14,7 +14,7 @@ class DataService:
             result_size (int): Maximum result size to check
             
         Returns:
-            int or None: The rank position or None if not found
+            tuple or None: (rank position, url) or None if not found
         """
         if 'organic' not in search_results:
             return None
@@ -24,7 +24,7 @@ class DataService:
         for result in organic_results[:result_size]:
             link = result.get('link', '')
             if domain in link:
-                return result.get('position', 0)
+                return (result.get('position', 0), link)
         
         return None
     
@@ -38,7 +38,7 @@ class DataService:
             keywords (list): List of keywords
             
         Returns:
-            pandas.DataFrame: DataFrame with rankings
+            pandas.DataFrame: DataFrame with rankings and URLs
         """
         data = []
         
@@ -47,11 +47,15 @@ class DataService:
             row = {'Keyword': keyword}
             
             for domain in domains:
-                rank = keyword_results.get(domain, None)
-                if rank is None:
+                result = keyword_results.get(domain, None)
+                if result is None:
                     row[domain] = "Not found"
+                    row[f"{domain}_url"] = ""
                 else:
+                    # Unpack the tuple (rank, url)
+                    rank, url = result
                     row[domain] = rank
+                    row[f"{domain}_url"] = url
             
             data.append(row)
         
@@ -76,10 +80,13 @@ class DataService:
             keyword_results = results.get(keyword, {})
             
             for domain in domains:
-                rank = keyword_results.get(domain, None)
+                result = keyword_results.get(domain, None)
                 
                 # Calculate score: higher positions get higher scores
-                if rank is not None:
+                if result is not None:
+                    # Unpack the tuple (rank, url)
+                    rank, _ = result
+                    
                     if rank == 1:
                         scores[domain] += 10
                     elif rank <= 3:
@@ -93,6 +100,7 @@ class DataService:
         
         # Calculate average score per keyword
         for domain in domains:
-            scores[domain] = round(scores[domain] / keyword_count, 2)
+            scores[domain] = float(scores[domain]) / keyword_count
+            scores[domain] = round(scores[domain] * 100) / 100  # Round to 2 decimal places
             
         return scores

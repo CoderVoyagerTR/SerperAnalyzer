@@ -50,7 +50,7 @@ if 'search_type' not in st.session_state:
 if 'result_size' not in st.session_state:
     st.session_state.result_size = 10
 if 'location' not in st.session_state:
-    st.session_state.location = "United States"
+    st.session_state.location = "Turkey"
 if 'results_history' not in st.session_state:
     st.session_state.results_history = {}
 if 'current_results' not in st.session_state:
@@ -134,30 +134,46 @@ if track_button_clicked:
 if st.session_state.current_results:
     st.markdown("## Results")
     
-    # Create a simple dataframe for display
-    data = []
-    for keyword in st.session_state.keywords:
-        keyword_results = st.session_state.current_results.get(keyword, {})
-        row = {'Keyword': keyword}
+    # Get results using the updated data service
+    df = data_service.results_to_dataframe(
+        st.session_state.current_results, 
+        st.session_state.domains, 
+        st.session_state.keywords
+    )
+    
+    # Create two tables - one for rankings and one for URLs
+    st.markdown("### Rankings")
+    
+    # Filter columns for rankings only (exclude URL columns)
+    ranking_cols = ['Keyword'] + [col for col in df.columns if not col.endswith('_url')]
+    ranking_df = df[ranking_cols]
+    
+    # Display the rankings table
+    st.dataframe(ranking_df, use_container_width=True, height=300)
+    
+    st.markdown("### URLs")
+    url_data = []
+    
+    # Create a table with keywords and found URLs
+    for _, row in df.iterrows():
+        url_row = {'Keyword': row['Keyword']}
         
         for domain in st.session_state.domains:
-            rank = keyword_results.get(domain, None)
-            if rank is None:
-                row[domain] = "Not found"
+            url_col = f"{domain}_url"
+            if url_col in row and row[url_col]:
+                url_row[domain] = row[url_col]
             else:
-                row[domain] = rank
+                url_row[domain] = "Not found"
         
-        data.append(row)
+        url_data.append(url_row)
     
-    df = pd.DataFrame(data)
+    url_df = pd.DataFrame(url_data)
+    st.dataframe(url_df, use_container_width=True, height=300)
     
-    # Display the table without styling
-    st.dataframe(df, use_container_width=True, height=400)
-    
-    # Add simple CSV export button
+    # Add simple CSV export button for complete data
     csv = df.to_csv(index=False)
     st.download_button(
-        label="Download CSV",
+        label="Download Complete Data (CSV)",
         data=csv,
         file_name="seo_rankings.csv",
         mime="text/csv"

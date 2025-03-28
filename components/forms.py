@@ -35,7 +35,7 @@ def render_input_forms():
         st.session_state.location = st.radio(
             "Location",
             options=["Turkey", "United States"],
-            index=1 if st.session_state.location == "United States" else 0,
+            index=0,  # Default to Turkey
             horizontal=True
         )
     
