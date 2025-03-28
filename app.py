@@ -134,46 +134,39 @@ if track_button_clicked:
 if st.session_state.current_results:
     st.markdown("## Results")
     
-    # Get results using the updated data service
-    df = data_service.results_to_dataframe(
-        st.session_state.current_results, 
-        st.session_state.domains, 
-        st.session_state.keywords
-    )
+    # Create a combined table with domains and URLs
+    combined_data = []
     
-    # Create two tables - one for rankings and one for URLs
-    st.markdown("### Rankings")
-    
-    # Filter columns for rankings only (exclude URL columns)
-    ranking_cols = ['Keyword'] + [col for col in df.columns if not col.endswith('_url') and col != 'Keyword']
-    ranking_df = df[ranking_cols]
-    
-    # Display the rankings table
-    st.dataframe(ranking_df, use_container_width=True, height=300)
-    
-    st.markdown("### URLs")
-    url_data = []
-    
-    # Create a table with keywords and found URLs
-    for _, row in df.iterrows():
-        url_row = {'Keyword': row['Keyword']}
+    for keyword in st.session_state.keywords:
+        keyword_results = st.session_state.current_results.get(keyword, {})
+        row = {'Keyword': keyword}
         
+        # Add rank and URL for each domain
         for domain in st.session_state.domains:
-            url_col = f"{domain}_url"
-            if url_col in row and row[url_col]:
-                url_row[domain] = row[url_col]
+            result = keyword_results.get(domain, None)
+            
+            # Add rank
+            if result is None:
+                row[f"{domain} Rank"] = "Not found"
+                row[f"{domain} URL"] = ""
             else:
-                url_row[domain] = "Not found"
+                # Unpack the tuple (rank, url)
+                rank, url = result
+                row[f"{domain} Rank"] = rank
+                row[f"{domain} URL"] = url
         
-        url_data.append(url_row)
+        combined_data.append(row)
     
-    url_df = pd.DataFrame(url_data)
-    st.dataframe(url_df, use_container_width=True, height=300)
+    # Create the combined dataframe
+    combined_df = pd.DataFrame(combined_data)
     
-    # Add simple CSV export button for complete data
-    csv = df.to_csv(index=False)
+    # Display the combined table
+    st.dataframe(combined_df, use_container_width=True, height=400)
+    
+    # Add CSV export button
+    csv = combined_df.to_csv(index=False)
     st.download_button(
-        label="Download Complete Data (CSV)",
+        label="Download Data (CSV)",
         data=csv,
         file_name="seo_rankings.csv",
         mime="text/csv"
