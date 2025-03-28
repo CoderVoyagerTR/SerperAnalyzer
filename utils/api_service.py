@@ -13,7 +13,7 @@ class SerperAPI:
         """Update the API key"""
         self.api_key = api_key
     
-    def get_search_results(self, query, search_type="search", location="United States", language="en", country_code="us"):
+    def get_search_results(self, query, search_type="search", location="United States", language="en", country_code="us", result_size=10):
         """
         Get search results from Serper.dev API
         
@@ -23,6 +23,7 @@ class SerperAPI:
             location (str): Location for search results
             language (str): Language code (en, tr, etc.)
             country_code (str): Country code (us, tr, etc.)
+            result_size (int): Number of results to return (10, 20, 50 or 100)
             
         Returns:
             dict: The search results
@@ -40,7 +41,8 @@ class SerperAPI:
             "gl": country_code,
             "hl": language,
             "type": search_type,
-            "location": location
+            "location": location,
+            "num": result_size  # Add the number of results to return
         }
         
         endpoint = f"{self.base_url}/search"

@@ -96,7 +96,8 @@ if track_button_clicked:
                         st.session_state.search_type,
                         st.session_state.location,
                         language,
-                        country_code
+                        country_code,
+                        st.session_state.result_size  # Pass the result size to API
                     )
                     
                     # Find rankings for each domain
@@ -152,8 +153,9 @@ if st.session_state.current_results:
             else:
                 # Unpack the tuple (rank, url)
                 rank, url = result
-                row[f"{domain} Rank"] = rank
-                row[f"{domain} URL"] = url
+                # Convert all ranks to string for consistency
+                row[f"{domain} Rank"] = str(rank) if rank else "Not found"
+                row[f"{domain} URL"] = url if url else ""
         
         combined_data.append(row)
     
