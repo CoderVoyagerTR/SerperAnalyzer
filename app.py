@@ -281,13 +281,37 @@ if st.session_state.current_results:
             additional_df = pd.DataFrame(additional_data)
             st.dataframe(additional_df, use_container_width=True, height=300)
             
-            # Add export button for additional data
-            csv_additional = additional_df.to_csv(index=False)
-            st.download_button(
-                label="Download Additional Data as CSV",
-                data=csv_additional,
-                file_name="seo_additional_data.csv",
-                mime="text/csv"
-            )
+            # Add export buttons for additional data (CSV and Excel)
+            col1, col2 = st.columns(2)
+            
+            # CSV export
+            with col1:
+                csv_additional = additional_df.to_csv(index=False)
+                st.download_button(
+                    label="Download Additional Data as CSV",
+                    data=csv_additional,
+                    file_name="seo_additional_data.csv",
+                    mime="text/csv"
+                )
+            
+            # Excel export
+            with col2:
+                # Create an Excel file in memory
+                output_additional = io.BytesIO()
+                
+                # Create a workbook and add data
+                with pd.ExcelWriter(output_additional, engine='openpyxl') as writer:
+                    additional_df.to_excel(writer, sheet_name='Additional Data', index=False)
+                    
+                # Set pointer to the beginning of the stream
+                output_additional.seek(0)
+                
+                # Download button for Excel
+                st.download_button(
+                    label="Download Additional Data as Excel",
+                    data=output_additional,
+                    file_name="seo_additional_data.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
 else:
     st.info("Enter domains and keywords then click 'Check Rankings' to see results here.")
