@@ -1,7 +1,9 @@
 import streamlit as st
 import os
 import pandas as pd
+import io
 from datetime import datetime
+from openpyxl import Workbook
 
 # Page configuration - Must be the first Streamlit command
 st.set_page_config(
@@ -165,13 +167,37 @@ if st.session_state.current_results:
     # Display the combined table
     st.dataframe(combined_df, use_container_width=True, height=400)
     
-    # Add CSV export button
-    csv = combined_df.to_csv(index=False)
-    st.download_button(
-        label="Download Data (CSV)",
-        data=csv,
-        file_name="seo_rankings.csv",
-        mime="text/csv"
-    )
+    # Add export buttons (CSV and Excel)
+    col1, col2 = st.columns(2)
+    
+    # CSV export
+    with col1:
+        csv = combined_df.to_csv(index=False)
+        st.download_button(
+            label="Download as CSV",
+            data=csv,
+            file_name="seo_rankings.csv",
+            mime="text/csv"
+        )
+    
+    # Excel export
+    with col2:
+        # Create an Excel file in memory
+        output = io.BytesIO()
+        
+        # Create a workbook and add data
+        with pd.ExcelWriter(output, engine='openpyxl') as writer:
+            combined_df.to_excel(writer, sheet_name='Rankings', index=False)
+            
+        # Set pointer to the beginning of the stream
+        output.seek(0)
+        
+        # Download button for Excel
+        st.download_button(
+            label="Download as Excel",
+            data=output,
+            file_name="seo_rankings.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
 else:
     st.info("Enter domains and keywords then click 'Check Rankings' to see results here.")
