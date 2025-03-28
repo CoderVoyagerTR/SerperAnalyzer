@@ -26,7 +26,7 @@ def render_input_forms():
         # Search type
         st.session_state.search_type = st.selectbox(
             "Search Type",
-            options=["search", "images", "news"],
+            options=["search", "images"],
             index=0
         )
     

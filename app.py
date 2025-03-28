@@ -152,9 +152,11 @@ if st.session_state.current_results:
             if result is None:
                 row[f"{domain} Rank"] = "Not found"
                 row[f"{domain} URL"] = ""
+                if st.session_state.search_type == "images":
+                    row[f"{domain} Image URL"] = ""
             else:
                 # Check if this is an image result (3 values) or regular result (2 values)
-                if len(result) == 3:
+                if len(result) == 3 and st.session_state.search_type == "images":
                     # Unpack the tuple (rank, url, image_url)
                     rank, url, image_url = result
                     # Convert all ranks to string for consistency
@@ -162,12 +164,19 @@ if st.session_state.current_results:
                     row[f"{domain} URL"] = url if url else ""
                     row[f"{domain} Image URL"] = image_url if image_url else ""
                 else:
-                    # Unpack the tuple (rank, url)
-                    rank, url = result
+                    # Unpack the tuple properly
+                    if len(result) == 3:
+                        # This is an image result but we're only going to use the first two values
+                        rank, url, _ = result
+                    else:
+                        # This is a regular result
+                        rank, url = result
+                    
                     # Convert all ranks to string for consistency
                     row[f"{domain} Rank"] = str(rank) if rank else "Not found"
                     row[f"{domain} URL"] = url if url else ""
-                    row[f"{domain} Image URL"] = ""
+                    if st.session_state.search_type == "images":
+                        row[f"{domain} Image URL"] = ""
         
         combined_data.append(row)
     
