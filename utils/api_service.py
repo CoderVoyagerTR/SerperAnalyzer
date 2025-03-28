@@ -5,7 +5,7 @@ import json
 class SerperAPI:
     """Service for interacting with the Serper.dev API"""
     
-    def __init__(self, api_key=""):
+    def __init__(self, api_key="46b91285ab5322e2dac2105c22d31aa73d886220"):
         self.api_key = api_key
         self.base_url = "https://google.serper.dev"
     
