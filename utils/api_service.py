@@ -36,6 +36,10 @@ class SerperAPI:
             "Content-Type": "application/json"
         }
         
+        # Use different endpoint and payload structure for image search
+        if search_type == "images":
+            return self.get_image_search_results(query, location, language, country_code, result_size)
+        
         payload = {
             "q": query,
             "gl": country_code,
@@ -46,6 +50,54 @@ class SerperAPI:
         }
         
         endpoint = f"{self.base_url}/search"
+        
+        try:
+            response = requests.post(endpoint, headers=headers, json=payload)
+            response.raise_for_status()  # Raise exception for HTTP errors
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            st.error(f"API Error: {str(e)}")
+            if hasattr(e, 'response') and e.response:
+                try:
+                    error_details = e.response.json()
+                    st.error(f"Error details: {json.dumps(error_details, indent=2)}")
+                except:
+                    st.error(f"Status code: {e.response.status_code}")
+                    st.error(f"Response text: {e.response.text}")
+            raise e
+    
+    def get_image_search_results(self, query, location="United States", language="en", country_code="us", result_size=10):
+        """
+        Get image search results from Serper.dev API
+        
+        Args:
+            query (str): The search query
+            location (str): Location for search results
+            language (str): Language code (en, tr, etc.)
+            country_code (str): Country code (us, tr, etc.)
+            result_size (int): Number of results to return (10, 20, 50 or 100)
+            
+        Returns:
+            dict: The image search results
+        """
+        if not self.api_key:
+            raise ValueError("API key is required")
+        
+        headers = {
+            "X-API-KEY": self.api_key,
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "q": query,
+            "gl": country_code,
+            "hl": language,
+            "location": location,
+            "num": result_size
+        }
+        
+        # Images need a specific endpoint
+        endpoint = f"{self.base_url}/images"
         
         try:
             response = requests.post(endpoint, headers=headers, json=payload)

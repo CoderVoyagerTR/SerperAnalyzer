@@ -16,6 +16,11 @@ class DataService:
         Returns:
             tuple or None: (rank position, url) or None if not found
         """
+        # Check if this is an image search result
+        if 'images' in search_results:
+            return self.find_domain_in_image_results(search_results, domain, result_size)
+        
+        # Regular organic search
         if 'organic' not in search_results:
             return None
             
@@ -24,6 +29,34 @@ class DataService:
         for result in organic_results[:result_size]:
             link = result.get('link', '')
             if domain in link:
+                return (result.get('position', 0), link)
+        
+        return None
+    
+    def find_domain_in_image_results(self, search_results, domain, result_size=10):
+        """
+        Find a domain in image search results
+        
+        Args:
+            search_results (dict): The image search results from Serper API
+            domain (str): The domain to find
+            result_size (int): Maximum result size to check
+            
+        Returns:
+            tuple or None: (rank position, url) or None if not found
+        """
+        if 'images' not in search_results:
+            return None
+            
+        image_results = search_results.get('images', [])
+        
+        for result in image_results[:result_size]:
+            # Both link and domain fields contain domain information in image results
+            link = result.get('link', '')
+            result_domain = result.get('domain', '')
+            
+            if domain in link or domain in result_domain:
+                # Return position and link
                 return (result.get('position', 0), link)
         
         return None
