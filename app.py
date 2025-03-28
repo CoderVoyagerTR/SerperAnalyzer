@@ -7,7 +7,7 @@ from openpyxl import Workbook
 
 # Page configuration - Must be the first Streamlit command
 st.set_page_config(
-    page_title="SEO Rank Tracker",
+    page_title="SEO Position Checker",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -61,8 +61,8 @@ if 'search_metadata' not in st.session_state:
     st.session_state.search_metadata = {}
 
 # Simple header
-st.markdown("# SEO Rank Tracker")
-st.markdown("Check your domain rankings on Google search results")
+st.markdown("# SEO Position Checker")
+st.markdown("Check your domain positions on Google search results")
 
 # Initialize services
 data_service = DataService()
@@ -148,7 +148,7 @@ if track_button_clicked:
                     'search_metadata': st.session_state.search_metadata.copy() if st.session_state.search_type == "search" else {},
                 }
                 
-                st.success("Rankings found!")
+                st.success("Positions found!")
                 st.rerun()
                 
             except Exception as e:
@@ -314,4 +314,29 @@ if st.session_state.current_results:
                     mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                 )
 else:
-    st.info("Enter domains and keywords then click 'Check Rankings' to see results here.")
+    st.info("Enter domains and keywords then click 'Check Positions' to see results here.")
+    
+# Footer with usage instructions
+st.markdown("""
+---
+### How to Use This Tool
+
+**SEO Position Checker** helps you monitor how your domains rank in Google search results across multiple keywords.
+
+**Quick Guide:**
+1. Enter one domain per line (e.g., example.com, mysite.com)
+2. Enter one keyword per line (e.g., best shoes, digital marketing)
+3. Select search type: Organic Search or Image Search
+4. Choose location: Turkey (default) or United States
+5. Select result size (10 to 100)
+6. Click "Check Positions" to analyze your domains' performance
+
+**Features:**
+- Compare multiple domains' positions side by side
+- View complete search result URLs for each listing
+- Export results as CSV or Excel files
+- For organic search: Get related search terms and "People Also Ask" questions
+- For image search: View both page URLs and direct image URLs
+
+Results update in real-time and can be easily shared with your team or clients.
+""", unsafe_allow_html=True)

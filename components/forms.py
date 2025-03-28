@@ -27,6 +27,7 @@ def render_input_forms():
         st.session_state.search_type = st.selectbox(
             "Search Type",
             options=["search", "images"],
+            format_func=lambda x: "Organic Search" if x == "search" else "Image Search",
             index=0
         )
     
@@ -47,7 +48,7 @@ def render_input_forms():
     )
     
     # Track button with more prominence
-    track_btn = st.button("Check Rankings", use_container_width=True, type="primary")
+    track_btn = st.button("Check Positions", use_container_width=True, type="primary")
     
     # Process input values if track button was clicked
     if track_btn:
