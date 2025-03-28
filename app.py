@@ -33,7 +33,7 @@ if 'results_history' not in st.session_state:
 if 'current_results' not in st.session_state:
     st.session_state.current_results = None
 if 'api_key' not in st.session_state:
-    st.session_state.api_key = os.getenv("SERPER_API_KEY", "")
+    st.session_state.api_key = "46b91285ab5322e2dac2105c22d31aa73d886220"
 
 # Main app layout
 st.title("SEO Rank Tracker")
