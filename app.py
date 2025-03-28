@@ -57,6 +57,8 @@ if 'results_history' not in st.session_state:
     st.session_state.results_history = {}
 if 'current_results' not in st.session_state:
     st.session_state.current_results = None
+if 'search_metadata' not in st.session_state:
+    st.session_state.search_metadata = {}
 
 # Simple header
 st.markdown("# SEO Rank Tracker")
@@ -93,19 +95,37 @@ if track_button_clicked:
                     progress_text = f"Processing: {keyword}"
                     st.caption(progress_text)
                     
-                    search_results = api_service.get_search_results(
-                        keyword, 
-                        st.session_state.search_type,
-                        st.session_state.location,
-                        language,
-                        country_code,
-                        st.session_state.result_size  # Pass the result size to API
-                    )
+                    if st.session_state.search_type == "images":
+                        search_results = api_service.get_image_search_results(
+                            keyword, 
+                            st.session_state.location,
+                            language,
+                            country_code,
+                            st.session_state.result_size
+                        )
+                    else:
+                        search_results = api_service.get_search_results(
+                            keyword, 
+                            st.session_state.search_type,
+                            st.session_state.location,
+                            language,
+                            country_code,
+                            st.session_state.result_size
+                        )
+                        
+                        # Save metadata for organic search only
+                        st.session_state.search_metadata[keyword] = {
+                            'related_searches': search_results.get('relatedSearches', []),
+                            'people_also_ask': search_results.get('peopleAlsoAsk', [])
+                        }
                     
                     # Find rankings for each domain
                     keyword_results = {}
                     for domain in st.session_state.domains:
-                        result = data_service.find_domain_rank(search_results, domain, st.session_state.result_size)
+                        if st.session_state.search_type == "images":
+                            result = data_service.find_domain_in_image_results(search_results, domain, st.session_state.result_size)
+                        else:
+                            result = data_service.find_domain_rank(search_results, domain, st.session_state.result_size)
                         keyword_results[domain] = result
                     
                     results[keyword] = keyword_results
@@ -125,6 +145,7 @@ if track_button_clicked:
                     'search_type': st.session_state.search_type,
                     'result_size': st.session_state.result_size,
                     'location': st.session_state.location,
+                    'search_metadata': st.session_state.search_metadata.copy() if st.session_state.search_type == "search" else {},
                 }
                 
                 st.success("Rankings found!")
@@ -218,5 +239,55 @@ if st.session_state.current_results:
             file_name="seo_rankings.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
+    
+    # For organic search, display additional information
+    if st.session_state.search_type == "search" and st.session_state.search_metadata:
+        st.markdown("## Additional Search Information")
+        st.caption("People Also Ask questions and Related Search Terms")
+        
+        # Create data for additional search info
+        additional_data = []
+        
+        for keyword in st.session_state.keywords:
+            metadata = st.session_state.search_metadata.get(keyword, {})
+            
+            # Get related searches
+            related_searches = metadata.get('related_searches', [])
+            related_search_terms = []
+            
+            for rs in related_searches[:5]:  # Limit to 5 related searches
+                if 'query' in rs:
+                    related_search_terms.append(rs['query'])
+            
+            # Get people also ask questions
+            people_also_ask = metadata.get('people_also_ask', [])
+            paa_questions = []
+            
+            for paa in people_also_ask[:5]:  # Limit to 5 questions
+                if 'question' in paa:
+                    paa_questions.append(paa['question'])
+            
+            # Add to data
+            row = {
+                'Keyword': keyword,
+                'People Also Ask': '\n'.join(paa_questions) if paa_questions else 'None available',
+                'Related Search Terms': '\n'.join(related_search_terms) if related_search_terms else 'None available'
+            }
+            
+            additional_data.append(row)
+        
+        # Create and display the dataframe
+        if additional_data:
+            additional_df = pd.DataFrame(additional_data)
+            st.dataframe(additional_df, use_container_width=True, height=300)
+            
+            # Add export button for additional data
+            csv_additional = additional_df.to_csv(index=False)
+            st.download_button(
+                label="Download Additional Data as CSV",
+                data=csv_additional,
+                file_name="seo_additional_data.csv",
+                mime="text/csv"
+            )
 else:
     st.info("Enter domains and keywords then click 'Check Rankings' to see results here.")
