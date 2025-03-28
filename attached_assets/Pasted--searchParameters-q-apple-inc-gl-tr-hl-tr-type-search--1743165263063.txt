@@ -1,0 +1,147 @@
+{
+  "searchParameters": {
+    "q": "apple inc",
+    "gl": "tr",
+    "hl": "tr",
+    "type": "search",
+    "location": "Turkey",
+    "engine": "google"
+  },
+  "knowledgeGraph": {
+    "title": "Apple",
+    "type": "Şirket",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIKiSXXy5ZMi7dgmfhEYyatoP1hv_r0A&s=0",
+    "description": "Apple Inc. ya da eski adıyla Apple Computer Inc., merkezi Cupertino'da bulunan; tüketici elektroniği, bilgisayar yazılımı ve kişisel bilgisayar tasarlayan, geliştiren ve satan Amerikan çok uluslu şirket.",
+    "descriptionSource": "Vikipedi",
+    "descriptionLink": "https://tr.wikipedia.org/wiki/Apple",
+    "attributes": {
+      "Teknik destek": "0800 448 829878",
+      "Kurucuları": "Steve Jobs, Steve Wozniak ve Ronald Wayne",
+      "CEO": "Tim Cook (24 Ağu 2011–)",
+      "Kuruluş tarihi": "1 Nisan 1976, Los Altos, Kaliforniya, ABD",
+      "Genel merkezi": "Cupertino, Kaliforniya, ABD"
+    }
+  },
+  "organic": [
+    {
+      "title": "Apple (Türkiye)",
+      "link": "https://www.apple.com/tr/",
+      "snippet": "Apple'ın yeniliklerle dolu dünyasını keşfedin ve iPhone, iPad, Apple Watch ... Telif Hakkı © 2025 Apple Inc. Tüm hakları saklıdır. Gizlilik Politikası ...",
+      "sitelinks": [
+        {
+          "title": "Apple Inc.",
+          "link": "https://books.apple.com/tr/author/apple-inc/id405307759"
+        },
+        {
+          "title": "Apple Leadership",
+          "link": "https://www.apple.com/leadership/"
+        },
+        {
+          "title": "Business",
+          "link": "https://www.apple.com/business/"
+        },
+        {
+          "title": "İletişim",
+          "link": "https://www.apple.com/tr/contact/"
+        },
+        {
+          "title": "Store",
+          "link": "https://www.apple.com/tr/store"
+        }
+      ],
+      "position": 1
+    },
+    {
+      "title": "Apple - Vikipedi",
+      "link": "https://tr.wikipedia.org/wiki/Apple",
+      "snippet": "Apple Inc. ya da eski adıyla Apple Computer Inc., merkezi Cupertino'da bulunan; tüketici elektroniği, bilgisayar yazılımı ve kişisel bilgisayar tasarlayan, ...",
+      "position": 2
+    },
+    {
+      "title": "Apple Inc. - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Apple_Inc.",
+      "snippet": "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, in Silicon Valley. It is best known for its consumer ...",
+      "position": 3
+    },
+    {
+      "title": "Apple Inc. Nedir? Apple Inc. Ne Demek? - Data Market",
+      "link": "https://www.datamarket.com.tr/sozluk/apple-inc/",
+      "snippet": "Apple Inc., Amerika Birleşik Devletleri merkezli bir çok uluslu teknoloji şirketidir. Apple, dünya çapında tanınmış bir teknoloji devi olarak bilinir ve bir ...",
+      "position": 4
+    },
+    {
+      "title": "Apple Türkiye Garantili Tüm Apple Ürünleri Uygun Fiyatlarla!",
+      "link": "https://www.mediamarkt.com.tr/tr/category/apple-644521.html",
+      "snippet": "Tüm Apple Ürünleri en uygun fiyatlarla MediaMarkt'ta! Apple Türkiye Garantili Apple Ürünlerini incelemek için hemen tıkla ve güvenli ödemenin ...",
+      "position": 5
+    },
+    {
+      "title": "Apple Inc. | History, Products, Headquarters, & Facts - Britannica",
+      "link": "https://www.britannica.com/money/Apple-Inc",
+      "snippet": "Apple Inc. is an American multinational technology company that revolutionized the technology sector through its innovation of computer software, ...",
+      "position": 6
+    },
+    {
+      "title": "APPLE INC. - LinkedIn",
+      "link": "https://tr.linkedin.com/company/iphones11/",
+      "snippet": "APPLE INC. Bilgisayarlar ve Elektronik Ürünler İmalatı. new technology,new designs,new unique and efficient power,new apple world.",
+      "position": 7
+    }
+  ],
+  "peopleAlsoAsk": [
+    {
+      "question": "Apple Inc.'nin açılımı nedir?",
+      "snippet": "abbreviation (Incorporated: in company name) (Anonim Şirketi, kıs.)",
+      "title": "inc. - WordReference.com İngilizce-Türkçe Sözlük",
+      "link": "https://www.wordreference.com/entr/inc."
+    },
+    {
+      "question": "Apple şu an kime ait?",
+      "snippet": "Apple Store\nTip\nPerakende mağaza\nKurucu\nSteve Jobs\nÖnemli kişiler\nTim Cook (CEO) Deirdre O'Brien (Başkan Yardımcısı)\nÜrün\nMac iPhone iPad Apple Watch Apple ve üçüncü taraf yazılım ve aksesuarları\nSahibi\nApple",
+      "title": "Apple Store - Vikipedi",
+      "link": "https://tr.wikipedia.org/wiki/Apple_Store"
+    },
+    {
+      "question": "iPhone 15 kaç TL?",
+      "snippet": "Lansmanda ilan edilen 128 GB iPhone 15 Türkiye fiyatı 49.999 liradır. Depolama seçeneğinin artışına göre fiyatları da yükselen modelin ilan edilen en yüksek satış fiyatı ise 512 GB için 61.999 liradır. iPhone 15 fiyatları lansman özelinde değerlendirildiğinde beklenilenin altında bir seviye ile geldi denilebilir.",
+      "title": "iPhone 15 128 GB Fiyatları, Özellikleri ve Yorumları | En Ucuzu Akakçe",
+      "link": "https://www.akakce.com/cep-telefonu/en-ucuz-iphone-15-fiyati,1745758198.html"
+    },
+    {
+      "question": "Apple'ın açılımı nedir?",
+      "snippet": "John Appleseed, 18. yüzyılda yaşayan Amerikalı yerleşimcilerdendi ve misyonerlik yapan bir çiftçiydi. İyi kalpli bir halk kahramanı ve elma tutkunu olarak bilinmektedir ve Apple şirketiyle tek görünen bağı da buradan gelmektedir.",
+      "title": "Apple Hakkında Bilinmeyenler - Devir Patent",
+      "link": "https://www.devirpatent.com/Apple-Hakkinda-Bilinmeyenler-_8567.html"
+    }
+  ],
+  "relatedSearches": [
+    {
+      "query": "Nvidia"
+    },
+    {
+      "query": "Apple"
+    },
+    {
+      "query": "Apple Türkiye"
+    },
+    {
+      "query": "iCloud"
+    },
+    {
+      "query": "Apple Store"
+    },
+    {
+      "query": "iCloud giriş"
+    },
+    {
+      "query": "Troy"
+    },
+    {
+      "query": "Apple USA Store"
+    },
+    {
+      "query": "App Store"
+    }
+  ],
+  "credits": 1
+}

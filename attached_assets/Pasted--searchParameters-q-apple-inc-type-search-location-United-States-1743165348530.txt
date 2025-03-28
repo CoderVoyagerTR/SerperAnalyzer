@@ -1,0 +1,147 @@
+{
+  "searchParameters": {
+    "q": "apple inc",
+    "type": "search",
+    "location": "United States",
+    "engine": "google",
+    "gl": "us"
+  },
+  "knowledgeGraph": {
+    "title": "Apple",
+    "type": "Technology company",
+    "website": "http://www.apple.com/",
+    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5ITHsQzdzkkFWKinRe1Y4FUbC_Vy3R_M&s=0",
+    "description": "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, in Silicon Valley. It is best known for its consumer electronics, software, and services.",
+    "descriptionSource": "Wikipedia",
+    "descriptionLink": "https://en.wikipedia.org/wiki/Apple_Inc.",
+    "attributes": {
+      "Customer service": "1 (800) 275-2273",
+      "Founders": "Steve Jobs, Steve Wozniak, and Ronald Wayne",
+      "Founded": "April 1, 1976, Los Altos, CA",
+      "CEO": "Tim Cook (Aug 24, 2011–)",
+      "Headquarters": "Cupertino, CA"
+    }
+  },
+  "organic": [
+    {
+      "title": "Apple",
+      "link": "https://www.apple.com/",
+      "snippet": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, ...",
+      "sitelinks": [
+        {
+          "title": "Career Opportunities",
+          "link": "https://www.apple.com/careers/us/"
+        },
+        {
+          "title": "Support",
+          "link": "https://support.apple.com/"
+        },
+        {
+          "title": "Investor Relations",
+          "link": "https://investor.apple.com/investor-relations/default.aspx"
+        },
+        {
+          "title": "iPhone",
+          "link": "https://www.apple.com/iphone/"
+        },
+        {
+          "title": "Apple Leadership",
+          "link": "https://www.apple.com/leadership/"
+        }
+      ],
+      "position": 1
+    },
+    {
+      "title": "Apple Inc. - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/Apple_Inc.",
+      "snippet": "Apple Inc. is an American multinational technology company headquartered in Cupertino, California, in Silicon Valley. It is best known for its consumer ...",
+      "position": 2
+    },
+    {
+      "title": "Apple Inc. (AAPL) Company Profile & Facts - Yahoo Finance",
+      "link": "https://finance.yahoo.com/quote/AAPL/profile/",
+      "snippet": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide. The company offers iPhone, a line ...",
+      "position": 3
+    },
+    {
+      "title": "Apple Inc. (AAPL) Stock Price Today - WSJ",
+      "link": "https://www.wsj.com/market-data/quotes/AAPL",
+      "snippet": "Apple Inc. engages in the design, manufacture, and sale of smartphones, personal computers, tablets, wearables and accessories, and other varieties of related ...",
+      "position": 4
+    },
+    {
+      "title": "Apple Inc. | History, Products, Headquarters, & Facts - Britannica",
+      "link": "https://www.britannica.com/money/Apple-Inc",
+      "snippet": "Apple Inc. is an American multinational technology company that revolutionized the technology sector through its innovation of computer software, ...",
+      "position": 5
+    },
+    {
+      "title": "AAPL: Apple Inc Stock Price Quote - NASDAQ GS - Bloomberg",
+      "link": "https://www.bloomberg.com/quote/AAPL:US",
+      "snippet": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables and accessories, and sells a variety of related ...",
+      "position": 6
+    },
+    {
+      "title": "Apple Inc. (AAPL) - Yahoo Finance",
+      "link": "https://finance.yahoo.com/quote/AAPL/",
+      "snippet": "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide.",
+      "position": 7
+    }
+  ],
+  "peopleAlsoAsk": [
+    {
+      "question": "What does Apple Inc. mean?",
+      "snippet": "Apple Inc., originally Apple Computer, Inc., is a multinational corporation that creates and markets consumer electronics and attendant computer software, and is a digital distributor of media content. Apple's core product lines are the iPhone smartphone, iPad tablet computer, and the Mac personal computer.",
+      "title": "History of Apple Inc. - Wikipedia",
+      "link": "https://en.wikipedia.org/wiki/History_of_Apple_Inc."
+    },
+    {
+      "question": "What is Apple Inc. known for?",
+      "snippet": "Apple Inc. (formerly Apple Computer Inc.) is an American computer and consumer electronics company famous for creating the iPhone, iPad and Macintosh computers. Apple is one of the largest companies globally with a market cap of more than $3 trillion.",
+      "title": "What is Apple? An products and history overview - TechTarget",
+      "link": "https://www.techtarget.com/whatis/definition/Apple"
+    },
+    {
+      "question": "Who owns Apple Inc?",
+      "snippet": "Apple Inc. is a publicly traded company, meaning it is owned collectively by its shareholders. Unlike privately held companies that have a limited number of owners, Apple's ownership is distributed among millions of individual and institutional investors who hold its publicly traded shares.",
+      "title": "Who owns Apple? - Design Gurus",
+      "link": "https://www.designgurus.io/answers/detail/who-owns-apple"
+    },
+    {
+      "question": "What does inc stand for in Apple?",
+      "snippet": "Inc is an abbreviation for INCORPORATED. It is a company's legal business structure.",
+      "title": "Business Corporation Entity Explained | ZenBusiness",
+      "link": "https://www.zenbusiness.com/what-does-inc-mean-in-business/"
+    }
+  ],
+  "relatedSearches": [
+    {
+      "query": "Google"
+    },
+    {
+      "query": "apple inc คืออะไร"
+    },
+    {
+      "query": "Apple Inc full form"
+    },
+    {
+      "query": "Apple Inc address"
+    },
+    {
+      "query": "Apple Inc website"
+    },
+    {
+      "query": "Apple Inc industry"
+    },
+    {
+      "query": "Apple Inc careers"
+    },
+    {
+      "query": "Apple Inc net worth"
+    },
+    {
+      "query": "Apple Inc history"
+    }
+  ],
+  "credits": 1
+}
