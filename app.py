@@ -102,8 +102,8 @@ if track_button_clicked:
                     # Find rankings for each domain
                     keyword_results = {}
                     for domain in st.session_state.domains:
-                        rank = data_service.find_domain_rank(search_results, domain, st.session_state.result_size)
-                        keyword_results[domain] = rank
+                        result = data_service.find_domain_rank(search_results, domain, st.session_state.result_size)
+                        keyword_results[domain] = result
                     
                     results[keyword] = keyword_results
                     
@@ -145,7 +145,7 @@ if st.session_state.current_results:
     st.markdown("### Rankings")
     
     # Filter columns for rankings only (exclude URL columns)
-    ranking_cols = ['Keyword'] + [col for col in df.columns if not col.endswith('_url')]
+    ranking_cols = ['Keyword'] + [col for col in df.columns if not col.endswith('_url') and col != 'Keyword']
     ranking_df = df[ranking_cols]
     
     # Display the rankings table
