@@ -43,7 +43,7 @@ class DataService:
             result_size (int): Maximum result size to check
             
         Returns:
-            tuple or None: (rank position, url) or None if not found
+            tuple or None: (rank position, url, image_url) or None if not found
         """
         if 'images' not in search_results:
             return None
@@ -56,8 +56,9 @@ class DataService:
             result_domain = result.get('domain', '')
             
             if domain in link or domain in result_domain:
-                # Return position and link
-                return (result.get('position', 0), link)
+                # Return position, link and image URL
+                image_url = result.get('imageUrl', '')
+                return (result.get('position', 0), link, image_url)
         
         return None
     
@@ -82,13 +83,23 @@ class DataService:
             for domain in domains:
                 result = keyword_results.get(domain, None)
                 if result is None:
-                    row[domain] = "Not found"
-                    row[f"{domain}_url"] = ""
+                    row[f"{domain} Rank"] = "Not found"
+                    row[f"{domain} URL"] = ""
+                    row[f"{domain} Image URL"] = ""
                 else:
-                    # Unpack the tuple (rank, url)
-                    rank, url = result
-                    row[domain] = rank
-                    row[f"{domain}_url"] = url
+                    # Check if this is an image result (3 values) or regular result (2 values)
+                    if len(result) == 3:
+                        # Unpack the tuple (rank, url, image_url)
+                        rank, url, image_url = result
+                        row[f"{domain} Rank"] = rank
+                        row[f"{domain} URL"] = url
+                        row[f"{domain} Image URL"] = image_url
+                    else:
+                        # Unpack the tuple (rank, url)
+                        rank, url = result
+                        row[f"{domain} Rank"] = rank
+                        row[f"{domain} URL"] = url
+                        row[f"{domain} Image URL"] = ""
             
             data.append(row)
         
@@ -117,8 +128,8 @@ class DataService:
                 
                 # Calculate score: higher positions get higher scores
                 if result is not None:
-                    # Unpack the tuple (rank, url)
-                    rank, _ = result
+                    # Get the rank (first element of the tuple, regardless of tuple length)
+                    rank = result[0]
                     
                     if rank == 1:
                         scores[domain] += 10

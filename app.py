@@ -158,6 +158,11 @@ if st.session_state.current_results:
                 # Convert all ranks to string for consistency
                 row[f"{domain} Rank"] = str(rank) if rank else "Not found"
                 row[f"{domain} URL"] = url if url else ""
+                
+                # Add Image URL if available (for image search)
+                if len(result) >= 3:
+                    image_url = result[2]
+                    row[f"{domain} Image URL"] = image_url if image_url else ""
         
         combined_data.append(row)
     
