@@ -1,63 +1,63 @@
 # SEO Position Checker
 
-SEO Position Checker, Serper.dev API'sini kullanarak birden fazla domainın Google arama sonuçlarındaki pozisyonlarını takip etmenizi sağlayan bir Streamlit uygulamasıdır.
+SEO Position Checker is a Streamlit application that uses the Serper.dev API to track the positions of multiple domains in Google search results.
 
-## Özellikler
+## Features
 
-- Birden fazla domainın pozisyonlarını aynı anda kontrol edin
-- Organik arama ve görsel arama sonuçlarını görüntüleyin
-- Farklı lokasyonlar (Türkiye ve ABD) ve diller için arama yapın
-- "İnsanlar Ayrıca Şunu Soruyor" ve "İlgili Aramalar" bilgilerini görüntüleyin
-- Sonuçları CSV veya Excel olarak dışa aktarın
-- Görsel aramalarda hem sayfa URL'si hem de görsel URL'si bilgilerini görüntüleyin
+- Check positions of multiple domains simultaneously
+- View organic search and image search results
+- Search in different locations (Turkey and USA) and languages
+- View "People Also Ask" and "Related Searches" information
+- Export results as CSV or Excel
+- For image searches, view both the page URL and image URL information
 
-## Kurulum
+## Installation
 
-1. Bu repo'yu klonlayın:
+1. Clone this repository:
 ```bash
 git clone https://github.com/your-username/seo-position-checker.git
 cd seo-position-checker
 ```
 
-2. Gerekli paketleri yükleyin:
+2. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Serper.dev API anahtarınızı ayarlayın:
-   - [Serper.dev](https://serper.dev) sitesinden bir API anahtarı alın
-   - `.streamlit/secrets.toml.example` dosyasını `.streamlit/secrets.toml` olarak kopyalayın
-   - `secrets.toml` dosyasında `your_serper_api_key_here` kısmını kendi API anahtarınızla değiştirin
+3. Set up your Serper.dev API key:
+   - Get an API key from [Serper.dev](https://serper.dev)
+   - Copy the `.streamlit/secrets.toml.example` file to `.streamlit/secrets.toml`
+   - Replace `your_serper_api_key_here` in the `secrets.toml` file with your own API key
 
-## Kullanım
+## Usage
 
-Uygulamayı başlatmak için:
+To start the application:
 ```bash
 streamlit run app.py
 ```
 
-### Streamlit Cloud'da Çalıştırma
+### Running on Streamlit Cloud
 
-Bu uygulamayı [Streamlit Cloud](https://streamlit.io/cloud) üzerinde de çalıştırabilirsiniz:
+You can also run this application on [Streamlit Cloud](https://streamlit.io/cloud):
 
-1. GitHub reponuzu Streamlit Cloud'a bağlayın
-2. Settings > Secrets bölümünde API anahtarınızı ekleyin:
-   - Anahtar adı: `api_keys.serper`
-   - Değer: Serper.dev API anahtarınız
+1. Connect your GitHub repository to Streamlit Cloud
+2. Add your API key in Settings > Secrets:
+   - Key name: `api_keys.serper`
+   - Value: Your Serper.dev API key
 
-## Nasıl Kullanılır?
+## How to Use
 
-1. Domainleri satır satır girin (örn., example.com, mysite.com)
-2. Anahtar kelimeleri satır satır girin (örn., en iyi ayakkabılar, dijital pazarlama)
-3. Arama tipini seçin: Organik Arama veya Görsel Arama
-4. Lokasyon seçin: Türkiye (varsayılan) veya ABD
-5. Sonuç boyutu seçin (10 ila 100)
-6. "Pozisyonları Kontrol Et" butonuna tıklayın
+1. Enter domains line by line (e.g., example.com, mysite.com)
+2. Enter keywords line by line (e.g., best shoes, digital marketing)
+3. Select search type: Organic Search or Image Search
+4. Choose location: Turkey (default) or USA
+5. Select result size (10 to 100)
+6. Click "Check Positions"
 
-## Lisans
+## License
 
-Bu proje MIT lisansı altında lisanslanmıştır - detaylar için LICENSE dosyasına bakın.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## İletişim
+## Contact
 
-Sorularınız veya önerileriniz varsa, lütfen GitHub üzerinden issue açın.
+If you have any questions or suggestions, please open an issue on GitHub.
