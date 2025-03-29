@@ -54,10 +54,6 @@ You can also run this application on [Streamlit Cloud](https://streamlit.io/clou
 5. Select result size (10 to 100)
 6. Click "Check Positions"
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Contact
 
 If you have any questions or suggestions, please open an issue on GitHub.
