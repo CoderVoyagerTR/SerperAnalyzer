@@ -339,4 +339,14 @@ st.markdown("""
 - For image search: View both page URLs and direct image URLs
 
 Results update in real-time and can be easily shared with your team or clients.
+
+---
+### Real-Time and Accurate SEO Data
+
+Tools like SEMrush or Ahrefs may not always provide accurate results since they pull position data from their own databases. In some cases, when their bots are blocked by Google, keywords may even appear as "lost."
+
+This application uses the Serper.dev API to access real-time and accurate data, allowing us to see our true losses clearly. This way, we can shape our SEO strategy based on more reliable data.
+
+Burak Sevinmiş  
+SEO Executive – Opsis Digital
 """, unsafe_allow_html=True)
