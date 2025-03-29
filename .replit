@@ -17,10 +17,10 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "workflow.run"
-args = "SEO Rank Tracker"
+args = "SEO Position Checker"
 
 [[workflows.workflow]]
-name = "SEO Rank Tracker"
+name = "SEO Position Checker"
 author = "agent"
 
 [workflows.workflow.metadata]

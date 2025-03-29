@@ -1,12 +1,18 @@
 import requests
 import streamlit as st
 import json
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 class SerperAPI:
     """Service for interacting with the Serper.dev API"""
     
-    def __init__(self, api_key="46b91285ab5322e2dac2105c22d31aa73d886220"):
-        self.api_key = api_key
+    def __init__(self, api_key=None):
+        # Get API key from environment variables, with a fallback to the parameter
+        self.api_key = api_key or os.getenv("SERPER_API_KEY")
         self.base_url = "https://google.serper.dev"
     
     def set_api_key(self, api_key):
